@@ -1,0 +1,16 @@
+{
+  "decks": [
+      {
+        "id": 1,
+        "name": "Mock Rendering in React",
+        "description": "RIR",
+        "cards": [{ "id": 2 }, { "id": 3 }]
+      },
+      {
+        "name": "Mock React Router",
+        "description": "RR",
+        "id": 2,
+        "cards": []
+      }
+    ]
+}
