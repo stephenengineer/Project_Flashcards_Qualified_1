@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { readDeck } from "../../utils/api";
 import Breadcrumb from "../Breadcrumb";
 import StudyCard from "./StudyCard";
 
 function DeckStudyPage({cards, setCards, routeButtonClick, deck, setDeck}) {
     const {deckId} = useParams();
-
-    useEffect(() => {
-        readDeck(deckId, (new AbortController()).abort())
-        .then(setDeck);
-    },[]);
 
     return (
         <>

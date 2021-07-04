@@ -10,30 +10,26 @@ function StudyCard({cards, setCards, deck, routeButtonClick}) {
     const {deckId} = useParams();
 
     useEffect(() => {
-        if (deck) setCards(deck.cards);
+        if (!deck || !deck?.cards?.length) return;
+        setCardDisplay(deck.cards[index].front);
     }, [deck])
 
     useEffect(() => {
-        if (!cards || !cards.length) return;
-        setCardDisplay(cards[index].front);
-    }, [cards])
-
-    useEffect(() => {
-        if (!cards || !cards.length) return;
-        setCardDisplay(cards[index].front);
+        if (!deck || !deck?.cards?.length) return;
+        setCardDisplay(deck.cards[index].front);
     }, [index])
 
     const flipCard = () => {
         setHasFlipped(true);
-        if (cardDisplay === cards[index].front) {
-            setCardDisplay(cards[index].back);
+        if (cardDisplay === deck.cards[index].front) {
+            setCardDisplay(deck.cards[index].back);
         } else {
-            setCardDisplay(cards[index].front)
+            setCardDisplay(deck.cards[index].front)
         }
     }
 
     const nextCard = () => {
-        if (index === cards.length - 1) {
+        if (index === deck.cards.length - 1) {
             if (
                 window.confirm("Restart cards?\n\nClick 'cancel' to return to the home page.")
             ) {
@@ -48,19 +44,19 @@ function StudyCard({cards, setCards, deck, routeButtonClick}) {
 
     const nextButton = hasFlipped && (<button onClick={() => nextCard()}>Next</button>)
 
-    if (!!cards && cards.length <= 2) {
+    if (!!deck && deck?.cards?.length <= 2) {
         return (
             <>
                 <h4>Not enough cards</h4>
-                <p>You need at least 3 cards to study. There are 2 cards in this deck.</p>
+                <p>You need at least 3 cards to study. There are {deck?.cards?.length} cards in this deck.</p>
                 <AddCardsButton url={`/decks/${deckId}/cards/new`} deckButtonClick={routeButtonClick} />
             </>
         )
     }
 
-    return !!cards && (
+    return !!deck && (
         <>
-            <h4>Card {index+1} of {cards.length}</h4>
+            <h4>Card {index+1} of {deck?.cards?.length}</h4>
             <p>{cardDisplay}</p>
             <button onClick={() => flipCard()}>Flip</button>
             {nextButton}

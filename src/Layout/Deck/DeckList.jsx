@@ -1,7 +1,7 @@
 import React from "react";
 import Deck from "./Deck";
 
-function DeckList({decks=[], deleteClick, setDecks, deckButtonClick}) {
+function DeckList({decks=[], deleteClick, deckButtonClick}) {
     const list = !!decks.length && decks.map((deck) => <Deck key={deck.id} deck={deck} deleteClick={deleteClick} deckButtonClick={deckButtonClick} />);
     
     return !!list && (

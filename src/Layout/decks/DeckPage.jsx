@@ -22,11 +22,6 @@ function DeckPage({deleteDeckClick, routeButtonClick}) {
         .then(setDeck)
     },[]);
 
-    useEffect(() => {
-        listCards(deck.id, (new AbortController()).abort())
-        .then(setCards)
-    }, [deck])
-
     const deleteCardClick = (cardId) => {
         if (window.confirm("Delete this card?\n\nYou will not be able to recover it.")) {
           deleteCard(cardId, new AbortController().abort())
@@ -56,7 +51,7 @@ function DeckPage({deleteDeckClick, routeButtonClick}) {
                 <EditButton url={`${url}/edit`} deckButtonClick={routeButtonClick} />
                 <AddCardsButton url={`${url}/cards/new`} deckButtonClick={routeButtonClick} />
                 <DeleteButton deleteDeckClick={deleteDeckClick} deckId={deck.id} />
-                <CardList cards={cards} deleteCardClick={deleteCardClick} cardButtonClick={routeButtonClick} />
+                <CardList cards={deck.cards} deleteCardClick={deleteCardClick} cardButtonClick={routeButtonClick} />
             </Route>
         </Switch>
     );

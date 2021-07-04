@@ -12,7 +12,7 @@ function Deck({deck, deleteClick, deckButtonClick}) {
     useEffect(() => {
         const abortController = new AbortController();
         listCards(deck.id, (new AbortController()).abort())
-        .then(setDeckCards);
+        .then(setDeckCards)
 
         return () => abortController.abort();
     }, []);
@@ -24,7 +24,7 @@ function Deck({deck, deleteClick, deckButtonClick}) {
                     {deck.name}
                 </h5>
                 <p>{deck.description}</p>
-                <small className="text-muted">{deckCards.length} cards</small>
+                <small className="text-muted">{deck.cards.length} cards</small>
                 <ViewButton url={baseUrl} deckButtonClick={deckButtonClick} />
                 <StudyButton url={`${baseUrl}/study`} deckButtonClick={deckButtonClick} />
                 <EditButton url={`${baseUrl}/edit`} deckButtonClick={deckButtonClick} />
