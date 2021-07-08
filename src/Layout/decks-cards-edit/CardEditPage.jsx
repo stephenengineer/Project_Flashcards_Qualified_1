@@ -11,7 +11,7 @@ function CardEditPage({deck, setDeck}) {
     useEffect(() => {
         readDeck(deckId, new AbortController().abort())
         .then(setDeck);
-    }, [deckId]);
+    }, [deckId, setDeck]);
 
     useEffect(() => {
         readCard(cardId, new AbortController().abort())

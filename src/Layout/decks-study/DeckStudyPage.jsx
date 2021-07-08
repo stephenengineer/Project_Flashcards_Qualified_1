@@ -1,10 +1,8 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import Breadcrumb from "../Breadcrumb";
 import StudyCard from "./StudyCard";
 
 function DeckStudyPage({cards, setCards, routeButtonClick, deck, setDeck}) {
-    const {deckId} = useParams();
 
     return (
         <>

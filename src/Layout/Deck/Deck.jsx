@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ViewButton from "./DeckButtons/ViewButton";
 import StudyButton from "./DeckButtons/StudyButton";
 import EditButton from "./DeckButtons/EditButton";
 import DeleteButton from "./DeckButtons/DeleteButton";
-import { listCards } from "../../utils/api";
 
 function Deck({deck, deleteClick, deckButtonClick}) {
-    const [deckCards, setDeckCards] = useState([]);
     const baseUrl = `/decks/${deck.id}`;
-
-    useEffect(() => {
-        const abortController = new AbortController();
-        listCards(deck.id, (new AbortController()).abort())
-        .then(setDeckCards)
-
-        return () => abortController.abort();
-    }, [deck.id]);
     
     return (
         <div className="card col-12 col-md-4 rounded-0">

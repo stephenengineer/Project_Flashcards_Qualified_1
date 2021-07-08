@@ -10,7 +10,7 @@ function CreateCardPage({deck, setDeck}) {
     useEffect(() => {
         readDeck(deckId, (new AbortController()).abort())
         .then(setDeck)
-    },[deckId]);
+    },[deckId, setDeck]);
 
     return (
         <>
