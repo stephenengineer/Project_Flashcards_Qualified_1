@@ -11,12 +11,12 @@ function CardEditPage({deck, setDeck}) {
     useEffect(() => {
         readDeck(deckId, new AbortController().abort())
         .then(setDeck);
-    }, []);
+    }, [deckId]);
 
     useEffect(() => {
         readCard(cardId, new AbortController().abort())
         .then(setCard);
-    }, [deck]);
+    }, [deck, cardId]);
 
     return (
         <>

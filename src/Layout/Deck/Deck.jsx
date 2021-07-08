@@ -15,7 +15,7 @@ function Deck({deck, deleteClick, deckButtonClick}) {
         .then(setDeckCards)
 
         return () => abortController.abort();
-    }, []);
+    }, [deck.id]);
     
     return (
         <div className="card col-12 col-md-4 rounded-0">

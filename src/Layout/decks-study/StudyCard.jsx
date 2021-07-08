@@ -12,12 +12,7 @@ function StudyCard({cards, setCards, deck, routeButtonClick}) {
     useEffect(() => {
         if (!deck || !deck?.cards?.length) return;
         setCardDisplay(deck.cards[index].front);
-    }, [deck])
-
-    useEffect(() => {
-        if (!deck || !deck?.cards?.length) return;
-        setCardDisplay(deck.cards[index].front);
-    }, [index])
+    }, [deck, index])
 
     const flipCard = () => {
         setHasFlipped(true);

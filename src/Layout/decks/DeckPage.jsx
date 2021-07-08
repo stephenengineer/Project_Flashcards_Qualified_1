@@ -20,14 +20,14 @@ function DeckPage({deleteDeckClick, routeButtonClick}) {
     useEffect(() => {
         readDeck(deckId, (new AbortController()).abort())
         .then(setDeck)
-    },[]);
+    },[deckId, cards]);
 
     const deleteCardClick = (cardId) => {
         if (window.confirm("Delete this card?\n\nYou will not be able to recover it.")) {
           deleteCard(cardId, new AbortController().abort())
           .then(listCards(deck.id, (new AbortController()).abort()))
-          .then(setCards)
-          .then(window.location.reload());
+          .then(setCards);
+        //   .then(window.location.reload());
         }
       };
 
